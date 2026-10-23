@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>Orbit Foundry — Space Mission Designer</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand-mark">✦</div>
+        <div><div class="eyebrow">MISSION DESIGN LAB</div><h1>ORBIT FOUNDRY</h1></div>
+        <div class="topbar-right"><span class="live-dot"></span> SIMULATION READY <span class="version">PROTOTYPE 0.3</span></div>
+      </header>
+      <main class="layout">
+        <aside class="panel designer-panel">
+          <div class="section-heading"><div><div class="eyebrow">PHASE 01</div><h2>Mission design</h2></div><span class="step-count">01 / 03</span></div>
+          <label class="field-label" for="mission">MISSION OBJECTIVE</label>
+          <div class="objective-card"><span class="objective-icon">◎</span><div><strong>Earth observation</strong><small>Capture and transmit surface imagery</small></div></div>
+          <div class="section-divider"></div>
+          <div class="field-row"><label class="field-label" for="rocket">LAUNCH VEHICLE</label><span class="field-hint">PAYLOAD LIMIT</span></div>
+          <select id="rocket" class="control"><option value="economy">Economy launcher · 120 kg</option><option value="standard" selected>Standard launcher · 220 kg</option><option value="heavy">Heavy-lift launcher · 400 kg</option></select>
+          <label class="field-label" for="camera">SCIENTIFIC INSTRUMENT</label>
+          <select id="camera" class="control"><option value="basic">Basic camera · 40 science · 10 data</option><option value="medium" selected>High-resolution camera · 75 science · 25 data</option><option value="advanced">Advanced camera · 100 science · 40 data</option></select>
+          <label class="field-label" for="panel">POWER SYSTEM</label>
+          <select id="panel" class="control"><option value="small">Compact solar array · 10 units</option><option value="medium" selected>Standard solar array · 22 units</option><option value="large">Extended solar array · 40 units</option></select>
+          <label class="field-label" for="antenna">COMMUNICATIONS</label>
+          <select id="antenna" class="control"><option value="basic">Basic antenna · 2 data/s</option><option value="standard" selected>Standard antenna · 8 data/s</option><option value="advanced">High-gain antenna · 12 data/s</option></select>
+          <div class="section-divider"></div>
+          <div class="budget-heading"><label class="field-label" for="budget">MISSION BUDGET</label><strong><span id="budgetValue">100</span> <small>CR</small></strong></div>
+          <input id="budget" type="range" min="50" max="150" step="10" value="100" />
+          <div class="range-labels"><span>50 CR</span><span>150 CR</span></div>
+          <button id="runButton" class="primary-button">▶ &nbsp; RUN MISSION SIMULATION</button>
+          <button id="resetButton" class="secondary-button">Reset configuration</button>
+        </aside>
+        <section class="viewport-panel">
+          <div class="viewport-top"><div><div class="eyebrow">LIVE TELEMETRY</div><h2>Orbital environment</h2></div><div class="orbit-chip"><span class="live-dot"></span> 3D VIEW ACTIVE</div></div>
+          <div id="scene" class="scene"><div class="scene-label scene-label-top"><span class="label-line"></span> LOW EARTH ORBIT <strong>LEO · 400 KM</strong></div><div class="scene-label scene-label-bottom">DRAG TO ROTATE <span>·</span> SCROLL TO ZOOM</div><div id="sceneLoading">INITIALIZING ORBITAL VIEW…</div></div>
+          <div class="telemetry-strip"><div><span class="metric-label">ALTITUDE</span><strong>400 <small>KM</small></strong></div><div><span class="metric-label">ORBIT PERIOD</span><strong>92 <small>MIN</small></strong></div><div><span class="metric-label">INCLINATION</span><strong>51.6<small>°</small></strong></div><div><span class="metric-label">MISSION ELAPSED</span><strong id="elapsed">00:00 <small>SIM</small></strong></div></div>
+          <div class="results-panel"><div class="results-heading"><div><div class="eyebrow">SYSTEM DIAGNOSTICS</div><h2>Mission readiness</h2></div><span id="statusPill" class="status-pill">AWAITING RUN</span></div><div class="resource-grid"><div class="resource-card">            <div class="resource-title">TOTAL COST <span>◈</span></div><div class="resource-value"><strong id="costValue">92</strong><small>/ <span id="budgetLimit">100</span> CR</small></div><div class="bar"><div id="costBar" class="bar-fill"></div></div></div><div class="resource-card">            <div class="resource-title">PAYLOAD MASS <span>⬡</span></div><div class="resource-value"><strong id="massValue">146</strong><small>/ <span id="massLimit">220</span> KG</small></div><div class="bar"><div id="massBar" class="bar-fill"></div></div></div><div class="resource-card"><div class="resource-title">SOLAR MARGIN <span>ϟ</span></div><div class="resource-value"><strong id="powerValue">+10</strong><small>UNITS</small></div><div class="bar"><div id="powerBar" class="bar-fill"></div></div></div><div class="resource-card"><div class="resource-title">SCIENCE POTENTIAL <span>✧</span></div><div class="resource-value"><strong id="scienceValue">75</strong><small>/ 100</small></div><div class="bar"><div id="scienceBar" class="bar-fill"></div></div></div></div><div id="feedback" class="feedback">Configure your spacecraft, then run the simulation to see whether your design can complete its objectives.</div></div>
+        </section>
+      </main>
+      <footer><span>ORBIT FOUNDRY · EDUCATIONAL SPACE SIMULATION</span><span>DEMO PHYSICS MODEL · NOT FLIGHT SOFTWARE</span></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
